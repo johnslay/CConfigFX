@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CConfigFX:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/CConfigFX_jar</output-path>
+    <root id="archive" name="CConfigFX.jar">
+      <element id="library" level="project" name="poi-3.13-20150929" />
+      <element id="module-output" name="CConfigFX" />
+    </root>
+  </artifact>
+</component>

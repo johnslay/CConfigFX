@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="config.ConfigController">
+
+    <children>
+        <HBox alignment="CENTER">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+           <children>
+               <Label fx:id="directoryLabel" text="Directory:" HBox.hgrow="ALWAYS">
+                   <HBox.margin>
+                       <Insets right="20.0" />
+                   </HBox.margin>
+               </Label>
+               <TextField fx:id="directoryTextField" text="No directory selected" HBox.hgrow="ALWAYS" />
+               <Button fx:id="directoryButton" onAction="#didSelectDirectoryButton" text="Browse">
+                   <HBox.margin>
+                       <Insets left="20.0" />
+                   </HBox.margin>
+               </Button>
+           </children>
+        </HBox>
+
+        <HBox fx:id="commandHbox" alignment="CENTER" disable="true">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+   <children>
+               <Label fx:id="commandLabel" text="Command:" HBox.hgrow="ALWAYS">
+                   <HBox.margin>
+                       <Insets right="13.0" />
+                   </HBox.margin>
+               </Label>
+               <TextField fx:id="commandTextField" text="" HBox.hgrow="ALWAYS" />
+               <Button fx:id="commandButton" onAction="#didSelectCommandButton" text="Search">
+                   <HBox.margin>
+                       <Insets left="23.0" />
+                   </HBox.margin>
+               </Button>
+   </children>
+        </HBox>
+
+        <HBox alignment="CENTER" prefHeight="38.0" prefWidth="456.0">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+   <children>
+               <CheckBox fx:id="caseCheckbox" text="Case Sensitive" />
+   </children>
+        </HBox>
+
+              <TabPane fx:id="tabPane" disable="true" VBox.vgrow="ALWAYS">
+            <tabs>
+                <Tab closable="false" text="Files Found">
+                    <content>
+                        <ScrollPane fitToHeight="true" fitToWidth="true">
+                            <content>
+                                <TableView fx:id="tableView" fixedCellSize="0.0">
+                                    <columns>
+                                        <TableColumn fx:id="tableColumnNumber" maxWidth="30.0" text="#">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="id" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn fx:id="tableColumnFileName" text="File Name">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="fileName" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn fx:id="tableColumnCommand" prefWidth="251.0" text="Command">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="lineCommand" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn fx:id="tableColumnLineNumber" maxWidth="209.0" prefWidth="90.0" text="Line Number">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="lineNumber" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                    </columns>
+                                </TableView>
+                            </content>
+                        </ScrollPane>
+                    </content>
+
+                      </Tab>
+                <Tab closable="false" text="Files Not Found">
+                    <content>
+                        <ScrollPane fitToHeight="true" fitToWidth="true">
+                            <content>
+                                <TableView fx:id="nfTableView">
+                                    <columns>
+                                        <TableColumn fx:id="nfTableColumnNumber" maxWidth="30.0" text="#">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="id" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn fx:id="nfTableColumnFileName" text="File Name">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="fileName" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                    </columns>
+                                </TableView>
+                            </content>
+                        </ScrollPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+               <Button fx:id="excelButton" alignment="BASELINE_CENTER" disable="true" onAction="#didSelectGenerateExcelButton" text="Generate Excel File" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <Label fx:id="summaryLabel" disable="true" text="Summary Report:" />
+      <Label fx:id="filesSearchedLabel" disable="true" text="Number of Files Searched:" />
+      <Label fx:id="filesFoundLabel" disable="true" text="Number of Entries:" />
+    </children>
+</VBox>
